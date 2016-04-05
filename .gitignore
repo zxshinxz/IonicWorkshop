@@ -5,4 +5,9 @@ node_modules/
 platforms/
 plugins/
 
+Model.js
 Notes.js
+
+
+www/css/ionic.app.css
+www/css/ionic.app.min.css
