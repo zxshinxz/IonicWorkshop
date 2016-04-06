@@ -12,7 +12,10 @@ var cached = require('gulp-cached');
 var remember = require('gulp-remember');
 
 var paths = {
-  sass: ['./scss/**/*.scss'],
+  sass: [
+    './scss/**/*.scss',
+    './www/states/**/*/scss'
+  ],
   js: [
     './www/**/*.js',
     '!./www/js/app.js',
