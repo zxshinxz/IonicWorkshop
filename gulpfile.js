@@ -8,7 +8,13 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  sass: ['./scss/**/*.scss'],
+  js: [
+    './www/**/*.js',
+    '!./www/js/app.js',
+    '!./www/js/compiled.js',
+    '!./www/lib/**/*.js'
+  ]
 };
 
 gulp.task('default', ['sass']);
@@ -23,6 +29,13 @@ gulp.task('sass', function(done) {
     }))
     .pipe(rename({ extname: '.min.css' }))
     .pipe(gulp.dest('./www/css/'))
+    .on('end', done);
+});
+
+gulp.task('js', function(done) {
+  gulp.src(paths.js)
+    .pipe(concat('compiled.js'))
+    .pipe(gulp.dest('./www/js/'))
     .on('end', done);
 });
 
