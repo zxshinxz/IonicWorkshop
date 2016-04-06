@@ -1,5 +1,45 @@
 (function() {
   'use strict';
+  angular.module('starter')
+    .controller('BrowseController', BrowseController);
+
+  BrowseController.$inject = [
+    'BrowseModel'
+  ];
+
+  function BrowseController(
+    BrowseModel
+  ) {
+    var Browse = this;
+    Browse.Model = BrowseModel;
+
+
+    //====================================================
+    //  Implementation
+    //====================================================
+  }
+})();
+
+(function() {
+  'use strict';
+
+  angular.module('starter')
+    .factory('BrowseModel', BrowseModel);
+
+  BrowseModel.$inject = [];
+
+  function BrowseModel() {
+
+    var Model = {
+
+    };
+
+    return Model;
+  }
+})();
+
+(function() {
+  'use strict';
 
   angular.module('starter')
     .controller('MainController', function($scope, $ionicModal, $timeout) {
@@ -39,46 +79,6 @@
     .factory('MainModel', MainModel);
 
   function MainModel() {
-
-    var Model = {
-
-    };
-
-    return Model;
-  }
-})();
-
-(function() {
-  'use strict';
-  angular.module('starter')
-    .controller('BrowseController', BrowseController);
-
-  BrowseController.$inject = [
-    'BrowseModel'
-  ];
-
-  function BrowseController(
-    BrowseModel
-  ) {
-    var Browse = this;
-    Browse.Model = BrowseModel;
-
-
-    //====================================================
-    //  Implementation
-    //====================================================
-  }
-})();
-
-(function() {
-  'use strict';
-
-  angular.module('starter')
-    .factory('BrowseModel', BrowseModel);
-
-  BrowseModel.$inject = [];
-
-  function BrowseModel() {
 
     var Model = {
 
@@ -144,6 +144,7 @@
   ) {
     var PlayList = this;
     PlayList.Model = PlayListModel;
+    // test
 
     $scope.playlists = [
       { title: 'Reggae', id: 1 },

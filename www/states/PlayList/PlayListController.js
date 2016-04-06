@@ -14,6 +14,7 @@
   ) {
     var PlayList = this;
     PlayList.Model = PlayListModel;
+    // test
 
     $scope.playlists = [
       { title: 'Reggae', id: 1 },
