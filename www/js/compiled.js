@@ -1,216 +1,190 @@
-(function() {
+'use strict';
+
+(function () {
   'use strict';
-  angular.module('starter')
-    .controller('BrowseController', BrowseController);
 
-  BrowseController.$inject = [
-    'BrowseModel'
-  ];
+  angular.module('starter').controller('MainController', function ($scope, $ionicModal, $timeout) {
+    $scope.loginData = {};
 
-  function BrowseController(
-    BrowseModel
-  ) {
+    $ionicModal.fromTemplateUrl('templates/loginModal.html', {
+      scope: $scope
+    }).then(function (modal) {
+      $scope.modal = modal;
+    });
+
+    $scope.closeLogin = function () {
+      $scope.modal.hide();
+    };
+
+    $scope.login = function () {
+      $scope.modal.show();
+    };
+
+    $scope.doLogin = function () {
+      console.log('Doing login', $scope.loginData);
+
+      // Simulate a login delay. Remove this and replace with your login
+      // code if using a login system
+      $timeout(function () {
+        $scope.closeLogin();
+      }, 1000);
+    };
+  });
+})();
+'use strict';
+
+(function () {
+  'use strict';
+
+  angular.module('starter').factory('MainModel', MainModel);
+
+  function MainModel() {
+
+    var Model = {};
+
+    return Model;
+  }
+})();
+'use strict';
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(function () {
+  'use strict';
+
+  angular.module('starter').controller('BrowseController', BrowseController);
+
+  BrowseController.$inject = ['BrowseModel'];
+
+  function BrowseController(BrowseModel) {
     var Browse = this;
     Browse.Model = BrowseModel;
 
+    var Test = function Test() {
+      _classCallCheck(this, Test);
 
+      this.test = 'test';
+    };
+
+    var test = new Test();
     //====================================================
     //  Implementation
     //====================================================
   }
 })();
+'use strict';
 
-(function() {
+(function () {
   'use strict';
 
-  angular.module('starter')
-    .factory('BrowseModel', BrowseModel);
+  angular.module('starter').factory('BrowseModel', BrowseModel);
 
   BrowseModel.$inject = [];
 
   function BrowseModel() {
 
-    var Model = {
-
-    };
+    var Model = {};
 
     return Model;
   }
 })();
+'use strict';
 
-(function() {
+(function () {
   'use strict';
 
-  angular.module('starter')
-    .controller('MainController', function($scope, $ionicModal, $timeout) {
-      $scope.loginData = {};
+  angular.module('starter').controller('PlayDetailController', PlayDetailController);
 
-      $ionicModal.fromTemplateUrl('templates/loginModal.html', {
-        scope: $scope
-      }).then(function(modal) {
-        $scope.modal = modal;
-      });
+  PlayDetailController.$inject = ['PlayDetailModel'];
 
-      $scope.closeLogin = function() {
-        $scope.modal.hide();
-      };
-
-      $scope.login = function() {
-        $scope.modal.show();
-      };
-
-      $scope.doLogin = function() {
-        console.log('Doing login', $scope.loginData);
-
-        // Simulate a login delay. Remove this and replace with your login
-        // code if using a login system
-        $timeout(function() {
-          $scope.closeLogin();
-        }, 1000);
-      };
-    });
-
-})();
-
-(function() {
-  'use strict';
-
-  angular.module('starter')
-    .factory('MainModel', MainModel);
-
-  function MainModel() {
-
-    var Model = {
-
-    };
-
-    return Model;
-  }
-})();
-
-(function() {
-  'use strict';
-  angular.module('starter')
-    .controller('PlayDetailController', PlayDetailController);
-
-  PlayDetailController.$inject = [
-    'PlayDetailModel'
-  ];
-
-  function PlayDetailController(
-    PlayDetailModel
-  ) {
+  function PlayDetailController(PlayDetailModel) {
     var PlayDetail = this;
     PlayDetail.Model = PlayDetailModel;
-
 
     //====================================================
     //  Implementation
     //====================================================
   }
 })();
+'use strict';
 
-(function() {
+(function () {
   'use strict';
 
-  angular.module('starter')
-    .factory('PlayDetailModel', PlayDetailModel);
+  angular.module('starter').factory('PlayDetailModel', PlayDetailModel);
 
   PlayDetailModel.$inject = [];
 
   function PlayDetailModel() {
 
-    var Model = {
-
-    };
+    var Model = {};
 
     return Model;
   }
 })();
+'use strict';
 
-(function() {
+(function () {
   'use strict';
-  angular.module('starter')
-    .controller('PlayListController', PlayListController);
 
-  PlayListController.$inject = [
-    '$scope',
-    'PlayListModel'
-  ];
+  angular.module('starter').controller('PlayListController', PlayListController);
 
-  function PlayListController(
-    $scope,
-    PlayListModel
-  ) {
+  PlayListController.$inject = ['$scope', 'PlayListModel'];
+
+  function PlayListController($scope, PlayListModel) {
     var PlayList = this;
     PlayList.Model = PlayListModel;
     // test
 
-    $scope.playlists = [
-      { title: 'Reggae', id: 1 },
-      { title: 'Chill', id: 2 },
-      { title: 'Dubstep', id: 3 },
-      { title: 'Indie', id: 4 },
-      { title: 'Rap', id: 5 },
-      { title: 'Cowbell', id: 6 }
-    ];
+    $scope.playlists = [{ title: 'Reggae', id: 1 }, { title: 'Chill', id: 2 }, { title: 'Dubstep', id: 3 }, { title: 'Indie', id: 4 }, { title: 'Rap', id: 5 }, { title: 'Cowbell', id: 6 }];
 
     //====================================================
     //  Implementation
     //====================================================
   }
 })();
+'use strict';
 
-(function() {
+(function () {
   'use strict';
 
-  angular.module('starter')
-    .factory('PlayListModel', PlayListModel);
+  angular.module('starter').factory('PlayListModel', PlayListModel);
 
   PlayListModel.$inject = [];
 
   function PlayListModel() {
 
-    var Model = {
-
-    };
+    var Model = {};
 
     return Model;
   }
 })();
+'use strict';
 
-(function() {
+(function () {
   'use strict';
-  angular.module('starter')
-    .controller('SearchController', SearchController);
 
-  SearchController.$inject = [
-    'SearchModel'
-  ];
+  angular.module('starter').controller('SearchController', SearchController);
 
-  function SearchController(
-    SearchModel
-  ) {
+  SearchController.$inject = ['SearchModel'];
+
+  function SearchController(SearchModel) {
     var Search = this;
     Search.Model = SearchModel;
-
-
   }
 })();
+'use strict';
 
-(function() {
+(function () {
   'use strict';
 
-  angular.module('starter')
-    .factory('SearchModel', SearchModel);
+  angular.module('starter').factory('SearchModel', SearchModel);
 
   SearchModel.$inject = [];
 
   function SearchModel() {
 
-    var Model = {
-
-    };
+    var Model = {};
 
     return Model;
   }

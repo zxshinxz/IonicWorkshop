@@ -7,6 +7,10 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 
+var babel = require('gulp-babel');
+var cached = require('gulp-cached');
+var remember = require('gulp-remember');
+
 var paths = {
   sass: ['./scss/**/*.scss'],
   js: [
@@ -34,6 +38,11 @@ gulp.task('sass', function(done) {
 
 gulp.task('js', function(done) {
   gulp.src(paths.js)
+    .pipe(cached('app'))
+    .pipe(babel({
+      presets: ['es2015']
+    }))
+    .pipe(remember('app'))
     .pipe(concat('compiled.js'))
     .pipe(gulp.dest('./www/js/'))
     .on('end', done);
