@@ -9,7 +9,10 @@
   function LoginModel() {
 
     var Model = {
-
+      form: {
+        email: null,
+        password: null
+      }
     };
 
     return Model;

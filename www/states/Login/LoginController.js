@@ -4,18 +4,33 @@
     .controller('LoginController', LoginController);
 
   LoginController.$inject = [
-    'LoginModel'
+    'Users', 'LoginModel', 'AppStorage'
   ];
 
   function LoginController(
-    LoginModel
+    Users, LoginModel, AppStorage
   ) {
     var vm = this;
     vm.Model = LoginModel;
-    console.log("'test' :::\n", 'test');
+
+    vm.login = login;
 
     //====================================================
-    //  Implementation
+    //  VM
+    //====================================================
+    function login() {
+      return Users.login({
+          identifier: vm.Model.form.email,
+          password: vm.Model.form.password
+        }).$promise
+        .then(function(userWrapper) {
+          AppStorage.user = userWrapper.user;
+          AppStorage.token = userWrapper.token;
+        })
+    }
+
+    //====================================================
+    //  Helper
     //====================================================
   }
 })();

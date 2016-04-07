@@ -3,6 +3,69 @@
 (function () {
   'use strict';
 
+  angular.module('app').constant('SERVER_URL', 'http://192.168.0.65:1337').constant('APP_NAME', 'shopping');
+})();
+'use strict';
+
+(function () {
+  'use strict';
+
+  angular.module('app').factory('Users', Users);
+
+  Users.$inject = ['$resource', 'SERVER_URL'];
+
+  function Users($resource, SERVER_URL) {
+
+    var url = SERVER_URL + '/user' + '/:uri';
+
+    var params = { uri: '@uri' };
+
+    var actions = {
+      register: {
+        method: 'POST',
+        params: {
+          uri: 'register'
+        }
+      },
+
+      login: {
+        method: 'POST',
+        params: {
+          uri: 'login'
+        }
+      }
+
+    };
+
+    var Service = $resource(url, params, actions);
+
+    return Service;
+  }
+})();
+'use strict';
+
+// local storage wrapper, name spaced.
+(function (angular) {
+  'use strict';
+
+  angular.module('app').factory('AppStorage', AppStorage);
+
+  AppStorage.$inject = ['$localStorage', 'APP_NAME'];
+
+  function AppStorage($localStorage, APP_NAME) {
+
+    if (!$localStorage[APP_NAME]) {
+      $localStorage[APP_NAME] = {};
+    }
+
+    return $localStorage[APP_NAME];
+  }
+})(angular);
+'use strict';
+
+(function () {
+  'use strict';
+
   angular.module('app').controller('BrowseController', BrowseController);
 
   BrowseController.$inject = ['BrowseModel'];
@@ -39,15 +102,29 @@
 
   angular.module('app').controller('LoginController', LoginController);
 
-  LoginController.$inject = ['LoginModel'];
+  LoginController.$inject = ['Users', 'LoginModel', 'AppStorage'];
 
-  function LoginController(LoginModel) {
+  function LoginController(Users, LoginModel, AppStorage) {
     var vm = this;
     vm.Model = LoginModel;
-    console.log("'test' :::\n", 'test');
+
+    vm.login = login;
 
     //====================================================
-    //  Implementation
+    //  VM
+    //====================================================
+    function login() {
+      return Users.login({
+        identifier: vm.Model.form.email,
+        password: vm.Model.form.password
+      }).$promise.then(function (userWrapper) {
+        AppStorage.user = userWrapper.user;
+        AppStorage.token = userWrapper.token;
+      });
+    }
+
+    //====================================================
+    //  Helper
     //====================================================
   }
 })();
@@ -62,7 +139,12 @@
 
   function LoginModel() {
 
-    var Model = {};
+    var Model = {
+      form: {
+        email: null,
+        password: null
+      }
+    };
 
     return Model;
   }
@@ -153,6 +235,36 @@
 (function () {
   'use strict';
 
+  angular.module('app').controller('SearchController', SearchController);
+
+  SearchController.$inject = ['SearchModel'];
+
+  function SearchController(SearchModel) {
+    var Search = this;
+    Search.Model = SearchModel;
+  }
+})();
+'use strict';
+
+(function () {
+  'use strict';
+
+  angular.module('app').factory('SearchModel', SearchModel);
+
+  SearchModel.$inject = [];
+
+  function SearchModel() {
+
+    var Model = {};
+
+    return Model;
+  }
+})();
+'use strict';
+
+(function () {
+  'use strict';
+
   angular.module('app').controller('PlayListController', PlayListController);
 
   PlayListController.$inject = ['$scope', 'PlayListModel'];
@@ -179,36 +291,6 @@
   PlayListModel.$inject = [];
 
   function PlayListModel() {
-
-    var Model = {};
-
-    return Model;
-  }
-})();
-'use strict';
-
-(function () {
-  'use strict';
-
-  angular.module('app').controller('SearchController', SearchController);
-
-  SearchController.$inject = ['SearchModel'];
-
-  function SearchController(SearchModel) {
-    var Search = this;
-    Search.Model = SearchModel;
-  }
-})();
-'use strict';
-
-(function () {
-  'use strict';
-
-  angular.module('app').factory('SearchModel', SearchModel);
-
-  SearchModel.$inject = [];
-
-  function SearchModel() {
 
     var Model = {};
 

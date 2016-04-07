@@ -1,24 +1,61 @@
-<ion-view>
+<ion-view id="login">
+<!--   
   <ion-nav-buttons side="left">
       <button class="button-icon ion-android-arrow-back"
           ng-click="vm.apple()"
       >
       </button>
   </ion-nav-buttons>
+ -->
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" 
+      menu-toggle="left"
+    >
+    </button>
+  </ion-nav-buttons>
 
   <ion-content>
 
-    <div class="row">
-      <div class="col">
-        
+    <section class="icon-section row">
+      <div class="col text-center">
+        <i class="ion-bag h1"></i>
       </div>
-    </div>
+    </section>
 
-    <div class="row">
-      <div class="col">
-        
+    <section class="heading-section">
+      <h1 class="text-center"> 
+        쇼핑몰 
+      </h1>
+      <h3 class="text-center">
+        물건을 사보자
+      </h3>
+    </section>
+
+    <section class="input-section list list-inset">
+      <div class="item item-input">
+        <input type="email" placeholder="이메일"
+          ng-model="vm.Model.form.email"
+        >
       </div>
-    </div>
+      <div class="item item-input">
+        <input type="password" placeholder="암호"
+          ng-model="vm.Model.form.password"
+        >
+      </div>
+    </section>
+
+    <section class="button-section padding">
+      <button class="button button-block button-energized"
+        ng-click="vm.login()"
+      >
+        로그인하기
+      </button>
+      <button class="button button-block button-positive"
+        ui-sref="Main.Signup"
+      >
+        회원가입하기
+      </button>
+    </section>
 
   </ion-content>
 </ion-view>
