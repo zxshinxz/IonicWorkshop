@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('starter')
+  angular.module('app')
     .controller('BrowseController', BrowseController);
 
   BrowseController.$inject = [
@@ -13,13 +13,6 @@
     var Browse = this;
     Browse.Model = BrowseModel;
 
-    class Test {
-      constructor() {
-        this.test = 'test';
-      }
-    }
-
-    var test = new Test();
     //====================================================
     //  Implementation
     //====================================================

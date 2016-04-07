@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('starter')
+  angular.module('app')
     .controller('PlayListController', PlayListController);
 
   PlayListController.$inject = [

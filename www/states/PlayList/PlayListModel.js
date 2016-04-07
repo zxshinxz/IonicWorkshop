@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('starter')
+  angular.module('app')
     .factory('PlayListModel', PlayListModel);
 
   PlayListModel.$inject = [];

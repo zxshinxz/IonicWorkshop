@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic'])
+angular.module('app', ['ionic'])
 
 .run(function($ionicPlatform, $window) {
   $ionicPlatform.ready(function() {
@@ -24,52 +24,72 @@ angular.module('starter', ['ionic'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-    .state('app', {
-      url: '/app',
-      abstract: true,
-      templateUrl: 'states/Main/Main.html',
-      controller: 'MainController'
-    })
 
-  .state('app.search', {
-    url: '/search',
+    .state('Main', {
+    url: '/Main',
+    abstract: true,
+    templateUrl: 'states/Main/Main.html',
+    controller: 'MainController as vm'
+  })
+
+  .state('Main.Login', {
+    url: '/Login',
     views: {
-      'menuContent': {
-        templateUrl: 'states/Search/Search.html',
-        controller: 'SearchController'
+      Main: {
+        templateUrl: 'states/Login/Login.html',
+        controller: 'LoginController as vm'
       }
     }
   })
 
-  .state('app.browse', {
-    url: '/browse',
-    views: {
-      'menuContent': {
-        templateUrl: 'states/Browse/Browse.html',
-        controller: 'BrowseController'
-      }
-    }
-  })
 
-  .state('app.playlists', {
-    url: '/playlists',
-    views: {
-      'menuContent': {
-        templateUrl: 'states/PlayList/PlayList.html',
-        controller: 'PlayListController'
-      }
-    }
-  })
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'states/PlayDetail/PlayDetail.html',
-        controller: 'PlayDetailController'
-      }
-    }
-  });
+  // .state('app', {
+  //   url: '/app',
+  //   abstract: true,
+  //   templateUrl: 'states/Main/Main.html',
+  //   // controller: 'MainController'
+  // })
+
+  // .state('app.search', {
+  //   url: '/search',
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: 'states/Search/Search.html',
+  //       controller: 'SearchController'
+  //     }
+  //   }
+  // })
+
+  // .state('app.browse', {
+  //   url: '/browse',
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: 'states/Browse/Browse.html',
+  //       controller: 'BrowseController'
+  //     }
+  //   }
+  // })
+
+  // .state('app.playlists', {
+  //   url: '/playlists',
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: 'states/PlayList/PlayList.html',
+  //       controller: 'PlayListController'
+  //     }
+  //   }
+  // })
+
+  // .state('app.single', {
+  //   url: '/playlists/:playlistId',
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: 'states/PlayDetail/PlayDetail.html',
+  //       controller: 'PlayDetailController'
+  //     }
+  //   }
+  // });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/playlists');
 });

@@ -3,7 +3,76 @@
 (function () {
   'use strict';
 
-  angular.module('starter').controller('MainController', function ($scope, $ionicModal, $timeout) {
+  angular.module('app').controller('BrowseController', BrowseController);
+
+  BrowseController.$inject = ['BrowseModel'];
+
+  function BrowseController(BrowseModel) {
+    var Browse = this;
+    Browse.Model = BrowseModel;
+
+    //====================================================
+    //  Implementation
+    //====================================================
+  }
+})();
+'use strict';
+
+(function () {
+  'use strict';
+
+  angular.module('app').factory('BrowseModel', BrowseModel);
+
+  BrowseModel.$inject = [];
+
+  function BrowseModel() {
+
+    var Model = {};
+
+    return Model;
+  }
+})();
+'use strict';
+
+(function () {
+  'use strict';
+
+  angular.module('app').controller('LoginController', LoginController);
+
+  LoginController.$inject = ['LoginModel'];
+
+  function LoginController(LoginModel) {
+    var vm = this;
+    vm.Model = LoginModel;
+    console.log("'test' :::\n", 'test');
+
+    //====================================================
+    //  Implementation
+    //====================================================
+  }
+})();
+'use strict';
+
+(function () {
+  'use strict';
+
+  angular.module('app').factory('LoginModel', LoginModel);
+
+  LoginModel.$inject = [];
+
+  function LoginModel() {
+
+    var Model = {};
+
+    return Model;
+  }
+})();
+'use strict';
+
+(function () {
+  'use strict';
+
+  angular.module('app').controller('MainController', function ($scope, $ionicModal, $timeout) {
     $scope.loginData = {};
 
     $ionicModal.fromTemplateUrl('templates/loginModal.html', {
@@ -36,7 +105,7 @@
 (function () {
   'use strict';
 
-  angular.module('starter').factory('MainModel', MainModel);
+  angular.module('app').factory('MainModel', MainModel);
 
   function MainModel() {
 
@@ -47,53 +116,10 @@
 })();
 'use strict';
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 (function () {
   'use strict';
 
-  angular.module('starter').controller('BrowseController', BrowseController);
-
-  BrowseController.$inject = ['BrowseModel'];
-
-  function BrowseController(BrowseModel) {
-    var Browse = this;
-    Browse.Model = BrowseModel;
-
-    var Test = function Test() {
-      _classCallCheck(this, Test);
-
-      this.test = 'test';
-    };
-
-    var test = new Test();
-    //====================================================
-    //  Implementation
-    //====================================================
-  }
-})();
-'use strict';
-
-(function () {
-  'use strict';
-
-  angular.module('starter').factory('BrowseModel', BrowseModel);
-
-  BrowseModel.$inject = [];
-
-  function BrowseModel() {
-
-    var Model = {};
-
-    return Model;
-  }
-})();
-'use strict';
-
-(function () {
-  'use strict';
-
-  angular.module('starter').controller('PlayDetailController', PlayDetailController);
+  angular.module('app').controller('PlayDetailController', PlayDetailController);
 
   PlayDetailController.$inject = ['PlayDetailModel'];
 
@@ -111,7 +137,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 (function () {
   'use strict';
 
-  angular.module('starter').factory('PlayDetailModel', PlayDetailModel);
+  angular.module('app').factory('PlayDetailModel', PlayDetailModel);
 
   PlayDetailModel.$inject = [];
 
@@ -127,7 +153,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 (function () {
   'use strict';
 
-  angular.module('starter').controller('PlayListController', PlayListController);
+  angular.module('app').controller('PlayListController', PlayListController);
 
   PlayListController.$inject = ['$scope', 'PlayListModel'];
 
@@ -148,7 +174,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 (function () {
   'use strict';
 
-  angular.module('starter').factory('PlayListModel', PlayListModel);
+  angular.module('app').factory('PlayListModel', PlayListModel);
 
   PlayListModel.$inject = [];
 
@@ -164,7 +190,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 (function () {
   'use strict';
 
-  angular.module('starter').controller('SearchController', SearchController);
+  angular.module('app').controller('SearchController', SearchController);
 
   SearchController.$inject = ['SearchModel'];
 
@@ -178,7 +204,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 (function () {
   'use strict';
 
-  angular.module('starter').factory('SearchModel', SearchModel);
+  angular.module('app').factory('SearchModel', SearchModel);
 
   SearchModel.$inject = [];
 

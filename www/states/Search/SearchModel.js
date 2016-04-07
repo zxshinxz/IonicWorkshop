@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('starter')
+  angular.module('app')
     .factory('SearchModel', SearchModel);
 
   SearchModel.$inject = [];
