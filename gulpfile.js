@@ -11,10 +11,12 @@ var babel = require('gulp-babel');
 var cached = require('gulp-cached');
 var remember = require('gulp-remember');
 
+var sassGlob = require('gulp-sass-glob');
+
 var paths = {
   sass: [
     './scss/**/*.scss',
-    './www/states/**/*/scss'
+    './www/states/**/*.scss'
   ],
   js: [
     './www/**/*.js',
@@ -28,6 +30,7 @@ gulp.task('default', ['sass']);
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
+    .pipe(sassGlob())
     .pipe(sass())
     .on('error', sass.logError)
     .pipe(gulp.dest('./www/css/'))

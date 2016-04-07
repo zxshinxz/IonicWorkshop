@@ -8980,7 +8980,7 @@ a.button {
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 5px;
+  padding: 0px;
   width: 100%; }
 
 .row-wrap {
@@ -8995,7 +8995,7 @@ a.button {
     padding: 0; }
 
 .row + .row {
-  margin-top: -5px;
+  margin-top: 0px;
   padding-top: 0; }
 
 .col {
@@ -9006,7 +9006,7 @@ a.button {
   -ms-flex: 1;
   flex: 1;
   display: block;
-  padding: 5px;
+  padding: 0px;
   width: 100%; }
 
 /* Vertically Align Columns */
@@ -9217,7 +9217,7 @@ a.button {
       -moz-flex: 1;
       -ms-flex: 1;
       flex: 1;
-      margin-bottom: 15px;
+      margin-bottom: 0px;
       margin-left: 0;
       max-width: 100%;
       width: 100%; } }
@@ -9238,7 +9238,7 @@ a.button {
       -moz-flex: 1;
       -ms-flex: 1;
       flex: 1;
-      margin-bottom: 15px;
+      margin-bottom: 0px;
       margin-left: 0;
       max-width: 100%;
       width: 100%; } }
@@ -9259,7 +9259,7 @@ a.button {
       -moz-flex: 1;
       -ms-flex: 1;
       flex: 1;
-      margin-bottom: 15px;
+      margin-bottom: 0px;
       margin-left: 0;
       max-width: 100%;
       width: 100%; } }
@@ -9730,3 +9730,6 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+.test {
+  margin: 0 auto; }
