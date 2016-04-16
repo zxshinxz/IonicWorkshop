@@ -1,1 +1,1 @@
-# IonicWorkshop
+# IonicWorkshopApp
